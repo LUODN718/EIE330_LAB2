@@ -13,21 +13,21 @@ module tb_Lab_2_3;
     );
 
     initial begin
+
         $display("Starting testbench for LAB_2_3 3-8 Decoder");
         $display("Time\tin1 in2 in3\tout");
         $monitor("%0t\t%b %b %b\t%b", $time, in1, in2, in3, out);
 
         {in1, in2, in3} = 3'b000; #10;
         {in1, in2, in3} = 3'b001; #10;
-        {in1, in2, in3} = 3'b010; #10;
+        {in1, in2, in3} = 3'bxxx; #10;
         {in1, in2, in3} = 3'b011; #10;
         {in1, in2, in3} = 3'b100; #10;
         {in1, in2, in3} = 3'b101; #10;
         {in1, in2, in3} = 3'b110; #10;
         {in1, in2, in3} = 3'b111; #10;
 
-        {in1, in2, in3} = 3'b000; #10; //test
-
+        {in1, in2, in3} = 3'b000; #10; 
 
         #10 $display("Test completed");
         $finish;
