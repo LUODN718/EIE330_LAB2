@@ -1,2 +1,3 @@
-# FPGA_project
-Lab report for storing FPGA courses
+# EIE330 LAB2
+Recorded the code parts of three parts of lab2
+
