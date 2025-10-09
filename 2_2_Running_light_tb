@@ -7,21 +7,21 @@ module running_light_tb();
 	reg rst_n;
 	wire [3:0]led;
 
-	running_light  running_light_uo(
+running_light  running_light_uo(
 						.clk(clk),
 						.rst_n(rst_n),			
-	               .led(led)
-);
+	               		.led(led)
+						);
 	               
-	initial clk= 1;
-	always#(`clk_period/2) clk = ~clk;
+initial clk= 1;
+always#(`clk_period/2) clk = ~clk;
 	
-	initial begin
-		rst_n = 1'b0;
-		#(`clk_period*10) 
-		rst_n = 1'b1;
-		#(`clk_period*1000) 
-		$stop;		
-	end
+initial begin
+	rst_n = 1'b0;
+	#(`clk_period*10) 
+	rst_n = 1'b1;
+	#(`clk_period*1000) 
+	$stop;		
+end
 	
 endmodule
