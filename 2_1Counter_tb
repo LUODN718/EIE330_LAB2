@@ -19,3 +19,15 @@ initial begin
     $timeformat(-9, 0, "ns", 6);
     $monitor("@time %t: led_out=%b", $time, led_out);
 end
+
+Lab2
+#(
+    .CNT_MAX    (25'd24)   
+)
+Lab2_inst
+(
+    .sys_clk    (sys_clk),  
+    .sys_rst_n  (sys_rst_n),  
+    .led_out    (led_out)  
+);
+endmodule
