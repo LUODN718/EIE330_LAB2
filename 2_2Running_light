@@ -1,1 +1,31 @@
+module running_light
+(
+	input clk,           
+	input rst_n,         
+	output reg[3:0] led            
+);
+
+reg [3:0]  cnt_250ms;
+parameter TIME_250MS = 4'd15;
+                                    
+always@(posedge clk or negedge rst_n)begin
+	if (rst_n == 1'b0)
+		cnt_250ms <= 4'd0;
+		
+	else if (cnt_250ms == TIME_250MS - 1)
+		cnt_250ms <= 4'd0;                     
+	else
+		cnt_250ms <= cnt_250ms + 4'd1;             
+end
+
+always@(posedge clk or negedge rst_n)begin
+	if (rst_n == 1'b0)
+		led <= 4'b0001;                   
+	else if (cnt_250ms == TIME_250MS - 1)      
+		led <= {led[2:0],led[3]};	
+	else	                         			//D4 D3 D2 D1  0001-> 0010 -> 0100 -> 1000 -> 0001
+		led <= led;
+end
+
+endmodule
 
